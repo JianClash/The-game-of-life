@@ -124,6 +124,7 @@ def main():
 	draw_lines()
 	cells = generate_cells()
 	clock = pygame.time.Clock()
+	paused = False
 
 	run = True
 	while run:
@@ -133,8 +134,29 @@ def main():
 				pygame.quit()
 				run = False
 				break
-			if event.type == pygame.KEYDOWN:
-				cells = generate_cells()
+			if event.type == pygame.KEYDOWN: #Detects if a key is pressed
+				if event.key == pygame.K_r:
+					cells = generate_cells()
+
+				if event.key == pygame.K_SPACE: #If key pressed is space bar it eneters its own loop 
+					run_2 = True
+					while run_2:
+						for event_2 in pygame.event.get():
+							if event_2.type == pygame.QUIT:
+								pygame.quit()
+								run_2 = False
+								run = False
+								break
+							if event_2.type == pygame.KEYDOWN:
+								if event_2.key == pygame.K_SPACE:
+									run_2 = False
+									break
+								if event_2.key == pygame.K_RIGHT:
+									display_cells(cells)
+									pygame.display.update()
+									cells = update_cell(cells)
+							pygame.display.update()
+
 		if run:
 			display_cells(cells)
 			pygame.display.update()
