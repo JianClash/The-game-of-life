@@ -5,4 +5,4 @@ Feel free to adjust the width and height it should be divisable by the cell slot
 To run the file you need to have the pygame moduale installed. After you installed it just run the file and it should work 
 
 # Note 
-This is my first time having a project in Github so there will be a lot of mistakes  
+This is my first project in Github so there will be a lot of mistakes  
