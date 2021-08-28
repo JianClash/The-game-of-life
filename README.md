@@ -1,7 +1,7 @@
 # The-game-of-life
 The game of life created by john conway done in python and module pygame.
 
-#Customization
+# Customization
 There are a lot of things you can customize like the height and width of the window the colors of the cells etc to know more check out the wiki
 
 # Run the file
