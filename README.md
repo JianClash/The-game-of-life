@@ -1,5 +1,5 @@
 # The-game-of-life
-The game of life created by john conway done in python and module pygame. If you press any key it will start a new generation and if there is no changes it will also start a new genaration 
+The game of life created by john conway done in python and module pygame. If you press any key it will start a new generation and there is a optional line of code commeneted it starts a new genaration automaticly if there is no change 
 
 # Customization
 There are a lot of things you can customize like the height and width of the window the colors of the cells etc to know more check out the wiki
