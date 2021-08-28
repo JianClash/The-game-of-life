@@ -90,6 +90,7 @@ def update_cell(cells): #Updates the every cells state by the rules
 						if cells[i + 1][j + 1] == alive:
 							alive_cells += 1
 				if i != 0: #top right corner
+					top_right = True
 					if cells[i - 1][j + 1] == alive: 
 						alive_cells += 1
 
@@ -104,8 +105,7 @@ def update_cell(cells): #Updates the every cells state by the rules
 					if top_right != True:
 						if cells[i - 1][j + 1] == alive:
 							alive_cells += 1
-
-			
+				
 			if cells[i][j] == alive:
 				if alive_cells < 2 or alive_cells > 3:
 					cells_copy[i][j] = dead
