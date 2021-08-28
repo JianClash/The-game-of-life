@@ -103,6 +103,10 @@ def update_cell(cells): #Updates the every cells state by the rules
 				if alive_cells == 3:
 					cells_copy[i][j] = alive
 
+	if cells == cells_copy: #Creates a new generation if there is know change
+		#pygame.time.delay(1000)
+		return generate_cells()
+
 	return cells_copy
 
 def main():
@@ -118,6 +122,8 @@ def main():
 				pygame.quit()
 				run = False
 				break
+			if event.type == pygame.KEYDOWN:
+				cells = generate_cells()
 		if run:
 			display_cells(cells)
 			pygame.display.update()
