@@ -3,34 +3,34 @@ import pygame, random
 pygame.init()
 
 WIDTH, HEIGHT = 1020, 560
-SPACE_BETWEEN_CELLS = 20
+SELL_SLOT_SIZE = 20
 
 black = (0, 0, 0)
 white = (255, 255, 255)
+purple = (128,0,128)
 
-alive = black
-dead = white
+alive = purple 
+dead = black
 
-chance = 50 #1/chance = Chance for the cell to be alive for the first generation
+chance = 2 #1/chance = Chance for the cell to be alive for the first generation
 fps = 60
 
 win = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("conway's game of life")
-win.fill(white) #Applies background color
-
+win.fill(black) #Applies background 
 
 def draw_lines():
-	for i in range(WIDTH//20): #Drawing lines verticaly
-		pygame.draw.line(win, black, (20*i, 0), (20*i, HEIGHT), 2) 
+	for i in range(WIDTH//SELL_SLOT_SIZE): #Drawing lines verticaly
+		pygame.draw.line(win, black, (SELL_SLOT_SIZE*i, 0), (SELL_SLOT_SIZE*i, HEIGHT), 2) 
 
-	for i in range(HEIGHT//20): #Drawing lines horizontaly
-		pygame.draw.line(win, black, (0, 20*i), (WIDTH, 20*i), 2)
+	for i in range(HEIGHT//SELL_SLOT_SIZE): #Drawing lines horizontaly
+		pygame.draw.line(win, black, (0, SELL_SLOT_SIZE*i), (WIDTH, SELL_SLOT_SIZE*i), 2)
 
 def generate_cells(): #Generates cell in random cell slots
 	cells = []
-	for i in range(HEIGHT//20):
+	for i in range(HEIGHT//SELL_SLOT_SIZE):
 		cells.append([])
-		for j in range(WIDTH//20):
+		for j in range(WIDTH//SELL_SLOT_SIZE):
 			if random.randint(1, chance) < chance:
 				cells[i].append(dead)
 			else:
@@ -42,20 +42,20 @@ def display_cells(cells):
 	for i in cells:
 		for j in i:
 			if j == alive:
-				pygame.draw.rect(win, j, (0+width_num + 2, 0+height_num + 2, 20 - 2, 20 - 2)) #Draws alive cells
+				pygame.draw.rect(win, j, (0 + width_num + 2, 0 + height_num + 2, SELL_SLOT_SIZE - 2, SELL_SLOT_SIZE - 2 ))
 			else:
-				pygame.draw.rect(win, j, (0+width_num + 2, 0+height_num + 2, 20 - 2, 20 - 2)) #Draws dead cells
+				pygame.draw.rect(win, j, (0 + width_num + 2, 0 + height_num + 2, SELL_SLOT_SIZE - 2, SELL_SLOT_SIZE - 2))
 			width_num += 20
 		width_num = 0
 		height_num += 20
  
 def update_cell(cells): #Updates the every cells state by the rules
-	cells_copy = [[cells[x][y] for y in range(len(cells[0]))] for x in range(len(cells))]
+	cells_copy = [[cells[x][y] for y in range(len(cells[0]))] for x in range(len(cells))] #Copies the cells list without pointing to the same referance
 
 	for i in range(len(cells)): #Finding every cells neibhors and updating the cells in a different list(cells_copy)
 		for j in range(len(cells[i])):
 			alive_cells = 0
-			if j != 0: #All right side cell cheking arguments
+			if j != 0: #All left side cell checking arguments
 				if cells[i][j - 1] == alive: #left to current cell
 					alive_cells += 1
 				if i != len(cells) - 1: #bottom left corner
@@ -65,7 +65,7 @@ def update_cell(cells): #Updates the every cells state by the rules
 					if cells[i - 1][j - 1] == alive:
 						alive_cells += 1
 
-			if i != len(cells) - 1:
+			if i != len(cells) - 1: #All bottom cell checking arguments
 				if cells[i + 1][j] == alive: #bottom
 					alive_cells += 1
 				if j != len(cells[i]) - 1: #bottom right corner
@@ -75,7 +75,7 @@ def update_cell(cells): #Updates the every cells state by the rules
 					if cells[i + 1][j - 1] == alive:
 						alive_cells += 1
 				
-			if j != len(cells[i]) - 1:
+			if j != len(cells[i]) - 1: #All right cells checking arguments
 				if cells[i][j + 1] == alive: #right
 					alive_cells += 1
 				if i != len(cells) - 1: #bottom right corner
@@ -85,7 +85,7 @@ def update_cell(cells): #Updates the every cells state by the rules
 					if cells[i - 1][j + 1] == alive: 
 						alive_cells += 1
 
-			if i != 0:
+			if i != 0: #All top cell checking arguments
 				if cells[i - 1][j] == alive: #top
 					alive_cells += 1 
 				if j != 0:#top left corner
@@ -123,6 +123,4 @@ def main():
 			pygame.display.update()
 			cells = update_cell(cells)
 			
-
-if __name__ == '__main__':
-	main()
+main()
