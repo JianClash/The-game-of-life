@@ -3,7 +3,7 @@ import pygame, random
 pygame.init()
 
 WIDTH, HEIGHT = 1020, 560
-SELL_SLOT_SIZE = 20
+CELL_SLOT_SIZE = 20
 
 black = (0, 0, 0)
 white = (255, 255, 255)
@@ -20,17 +20,17 @@ pygame.display.set_caption("conway's game of life")
 win.fill(black) #Applies background 
 
 def draw_lines():
-	for i in range(WIDTH//SELL_SLOT_SIZE): #Drawing lines verticaly
-		pygame.draw.line(win, black, (SELL_SLOT_SIZE*i, 0), (SELL_SLOT_SIZE*i, HEIGHT), 2) 
+	for i in range(WIDTH//CELL_SLOT_SIZE): #Drawing lines verticaly
+		pygame.draw.line(win, black, (CELL_SLOT_SIZE*i, 0), (CELL_SLOT_SIZE*i, HEIGHT), 2) 
 
-	for i in range(HEIGHT//SELL_SLOT_SIZE): #Drawing lines horizontaly
-		pygame.draw.line(win, black, (0, SELL_SLOT_SIZE*i), (WIDTH, SELL_SLOT_SIZE*i), 2)
+	for i in range(HEIGHT//CELL_SLOT_SIZE): #Drawing lines horizontaly
+		pygame.draw.line(win, black, (0, CELL_SLOT_SIZE*i), (WIDTH, CELL_SLOT_SIZE*i), 2)
 
 def generate_cells(): #Generates cell in random cell slots
 	cells = []
-	for i in range(HEIGHT//SELL_SLOT_SIZE):
+	for i in range(HEIGHT//CELL_SLOT_SIZE):
 		cells.append([])
-		for j in range(WIDTH//SELL_SLOT_SIZE):
+		for j in range(WIDTH//CELL_SLOT_SIZE):
 			if random.randint(1, chance) < chance:
 				cells[i].append(dead)
 			else:
@@ -42,9 +42,9 @@ def display_cells(cells):
 	for i in cells:
 		for j in i:
 			if j == alive:
-				pygame.draw.rect(win, j, (0 + width_num + 2, 0 + height_num + 2, SELL_SLOT_SIZE - 2, SELL_SLOT_SIZE - 2 ))
+				pygame.draw.rect(win, j, (0 + width_num + 2, 0 + height_num + 2, CELL_SLOT_SIZE - 2, CELL_SLOT_SIZE - 2 ))
 			else:
-				pygame.draw.rect(win, j, (0 + width_num + 2, 0 + height_num + 2, SELL_SLOT_SIZE - 2, SELL_SLOT_SIZE - 2))
+				pygame.draw.rect(win, j, (0 + width_num + 2, 0 + height_num + 2, CELL_SLOT_SIZE - 2, CELL_SLOT_SIZE - 2))
 			width_num += 20
 		width_num = 0
 		height_num += 20
