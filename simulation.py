@@ -55,13 +55,18 @@ def update_cell(cells): #Updates the every cells state by the rules
 	for i in range(len(cells)): #Finding every cells neibhors and updating the cells in a different list(cells_copy)
 		for j in range(len(cells[i])):
 			alive_cells = 0
+			top_left, top_right = False, False
+			bottom_left, bottom_right = False, False
+
 			if j != 0: #All left side cell checking arguments
 				if cells[i][j - 1] == alive: #left to current cell
 					alive_cells += 1
 				if i != len(cells) - 1: #bottom left corner
+					bottom_left = True
 					if cells[i + 1][j - 1] == alive:
 						alive_cells += 1
 				if i != 0: #top left corner
+					top_left = True
 					if cells[i - 1][j - 1] == alive:
 						alive_cells += 1
 
@@ -69,18 +74,21 @@ def update_cell(cells): #Updates the every cells state by the rules
 				if cells[i + 1][j] == alive: #bottom
 					alive_cells += 1
 				if j != len(cells[i]) - 1: #bottom right corner
+					bottom_right = True
 					if cells[i + 1][j + 1] == alive:
 						alive_cells += 1
 				if j != 0: #bottom left corner
-					if cells[i + 1][j - 1] == alive:
-						alive_cells += 1
+					if bottom_left != True:
+						if cells[i + 1][j - 1] == alive:
+							alive_cells += 1
 				
 			if j != len(cells[i]) - 1: #All right cells checking arguments
 				if cells[i][j + 1] == alive: #right
 					alive_cells += 1
 				if i != len(cells) - 1: #bottom right corner
-					if cells[i + 1][j + 1] == alive:
-						alive_cells += 1
+					if bottom_right != True:
+						if cells[i + 1][j + 1] == alive:
+							alive_cells += 1
 				if i != 0: #top right corner
 					if cells[i - 1][j + 1] == alive: 
 						alive_cells += 1
@@ -89,11 +97,13 @@ def update_cell(cells): #Updates the every cells state by the rules
 				if cells[i - 1][j] == alive: #top
 					alive_cells += 1 
 				if j != 0:#top left corner
-					if cells[i - 1][j - 1] == alive:
-						alive_cells += 1 
+					if top_left != True:
+						if cells[i - 1][j - 1] == alive:
+							alive_cells += 1 
 				if j != len(cells[i]) - 1: #top right
-					if cells[i - 1][j + 1] == alive:
-						alive_cells += 1
+					if top_right != True:
+						if cells[i - 1][j + 1] == alive:
+							alive_cells += 1
 
 			
 			if cells[i][j] == alive:
@@ -103,9 +113,10 @@ def update_cell(cells): #Updates the every cells state by the rules
 				if alive_cells == 3:
 					cells_copy[i][j] = alive
 
-	if cells == cells_copy: #Creates a new generation if there is know change
-		#pygame.time.delay(1000)
-		return generate_cells()
+	#OPTIONAL
+	# if cells == cells_copy: #Creates a new generation if there is know change
+	# 	pygame.time.delay(1000)
+	# 	return generate_cells()
 
 	return cells_copy
 
