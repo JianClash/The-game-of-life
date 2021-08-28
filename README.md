@@ -5,7 +5,7 @@ The game of life created by john conway done in python and module pygame. If you
 There are 3 fetures
 1) starting a new generation while a generation is running or paused [ r ]
 2) pausing ofcourse [ SPACE BAR ]. unpause [ SPACE BAR ] 
-3) going to the next generation of the current generation [ RIGHT ARROW ]
+3) going to the next generation of the current generation while paused[ RIGHT ARROW ]
 4) OPTIONAL ONE if there is no change in the currenet generation it starts a new generation it is commeneted out
 
 # Customization
