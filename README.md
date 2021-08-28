@@ -1,6 +1,9 @@
 # The-game-of-life
 The game of life created by john conway done in python and module pygame.
-Feel free to adjust the width and height it should be divisable by the cell slot size which in default is 20
+
+#Customization
+There are a lot of things you can customize like the height and width of the window the colors of the cells etc to know more check out the wiki
+
 # Run the file
 To run the file you need to have the pygame moduale installed. After you installed it just run the file and it should work 
 
