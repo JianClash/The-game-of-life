@@ -7,7 +7,6 @@ There are 3 fetures
 2) pausing ofcourse [ SPACE BAR ]. unpause [ SPACE BAR ] 
 3) going to the next generation of the current generation while paused [ RIGHT ARROW ]
 4) rewind while paused [ LEFT ARROW ]
-5) OPTIONAL ONE if there is no change in the currenet generation it starts a new generation it is commeneted out
 
 # Customization
 There are a lot of things you can customize like the height and width of the window the colors of the cells etc to know more check out the wiki
