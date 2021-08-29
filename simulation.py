@@ -124,8 +124,10 @@ def main():
 	draw_lines()
 	cells = generate_cells()
 	clock = pygame.time.Clock()
+	generation_history = []
 	paused = False
 	run = True
+
 	while run:
 		clock.tick_busy_loop(fps)
 		for event in pygame.event.get():
@@ -143,13 +145,22 @@ def main():
 					paused = not paused
 
 				if event.key == pygame.K_RIGHT and paused:
+					generation_history.append(cells)
+					cells = update_cell(cells)
 					display_cells(cells)
 					pygame.display.update()
-					cells = update_cell(cells)
 
+				if event.key == pygame.K_LEFT and paused:
+					if len(generation_history) > 1:
+						cells = generation_history[-1]
+						display_cells(cells)
+						pygame.display.update()
+						generation_history.pop()
+						                        
 		if run and not paused:
 			display_cells(cells)
 			pygame.display.update()
+			generation_history.append(cells)
 			cells = update_cell(cells)
 			
 main()
