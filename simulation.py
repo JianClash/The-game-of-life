@@ -13,7 +13,7 @@ alive = purple
 dead = black
 
 chance = 2 #1/chance = Chance for the cell to be alive for the first generation
-fps = 60
+fps = 30
 
 win = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("conway's game of life")
