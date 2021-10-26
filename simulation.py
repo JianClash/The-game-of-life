@@ -2,7 +2,7 @@ import pygame, random
 
 pygame.init()
 
-WIDTH, HEIGHT = 1020, 560
+WIDTH, HEIGHT = 1520, 820
 CELL_SLOT_SIZE = 20
 
 black = (0, 0, 0)
@@ -13,7 +13,7 @@ alive = purple
 dead = black
 
 chance = 2 #1/chance = Chance for the cell to be alive for the first generation
-fps = 30
+fps = 15
 
 win = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("conway's game of life")
@@ -112,11 +112,6 @@ def update_cell(cells): #Updates the every cells state by the rules
 			else:
 				if alive_cells == 3:
 					cells_copy[i][j] = alive
-
-	#OPTIONAL
-	# if cells == cells_copy: #Creates a new generation if there is know change
-	# 	pygame.time.delay(1000)
-	# 	return generate_cells()
 
 	return cells_copy
 
