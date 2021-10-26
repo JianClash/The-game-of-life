@@ -1,5 +1,5 @@
 # The-game-of-life
-The game of life created by John hortan conway done in python and module pygame. If you press any key it will start a new generation and there is a optional line of code commeneted it starts a new genaration automaticly if there is no change. There are also rules and may other thing in the game of life wikipedia
+The game of life created by John horton conway done in python and module pygame. If you press any key it will start a new generation and there is a optional line of code commeneted it starts a new genaration automaticly if there is no change. There are also rules and may other thing in the game of life wikipedia
 
 # Feutures
 There are 3 fetures
