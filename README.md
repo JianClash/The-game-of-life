@@ -2,7 +2,7 @@
 The game of life created by John horton conway done in python and module pygame. There are also rules and many other thing in the game of life wikipedia
 
 # Feutures
-There are 3 fetures
+There are 3 feutures
 1) starting a new generation while a generation is running or paused [ r ]
 2) pausing ofcourse [ SPACE BAR ]. unpause [ SPACE BAR ] 
 3) going to the next generation of the current generation while paused [ RIGHT ARROW ]
